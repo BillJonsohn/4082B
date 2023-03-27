@@ -62,6 +62,12 @@ void cataIntake(int speed){
     intakeSpeed = speed;
 }
 
+void cataRoller(int time){
+    intakeSpeed = 127;
+    pros::delay(time);
+    intakeSpeed = 0;
+}
+
 void cataWait(){
     while(state == SHOOT){
         pros::delay(10);

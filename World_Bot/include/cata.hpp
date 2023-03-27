@@ -8,6 +8,8 @@ void cataShoot();
 
 void cataIntake(int speed = 127);
 
+void cataRoller(int time);
+
 void cataWait();
 
 void cataInitialize();
