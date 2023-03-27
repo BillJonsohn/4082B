@@ -33,11 +33,12 @@ void cataShare(){
             rMotor.set_brake_mode(pros::E_MOTOR_BRAKE_BRAKE);
             lMotor.move(127);
             rMotor.move(127);
-            pros::delay(105);
-            lMotor.move(0);
-            rMotor.move(0);
-            pros::delay(125);
-            state = PRIME;
+            if(!cataLimit.get_value()){
+                lMotor.move(0);
+                rMotor.move(0);
+                pros::delay(125);
+                state = PRIME;
+            }
         }
         pros::delay(10);
     }
