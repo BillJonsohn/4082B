@@ -164,7 +164,7 @@ void opcontrol() {
     // chassis.arcade_flipped(ez::SINGLE); // Flipped single arcade
 
     if(master.get_digital(DIGITAL_R1)){
-      cataIntake(-127);
+      cataIntake(127);
     }
     else{
       cataIntake(0);
