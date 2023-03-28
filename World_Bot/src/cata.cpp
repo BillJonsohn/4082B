@@ -37,7 +37,7 @@ void cataShare(){
             lMotor.move(127);
             rMotor.move(127);
             if(!cataLimit1.get_value()){
-                pros::delay(5);
+                pros::delay(10);
                 lMotor.move(0);
                 rMotor.move(0);
                 pros::delay(150);
