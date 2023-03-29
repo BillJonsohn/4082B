@@ -28,6 +28,7 @@ void cataShare(){
         else if(state == HOLD){
             lMotor.set_brake_mode(pros::E_MOTOR_BRAKE_BRAKE);
             rMotor.set_brake_mode(pros::E_MOTOR_BRAKE_BRAKE);
+            //pros::delay(25);
             lMotor.move(intakeSpeed);
             rMotor.move(intakeSpeed);
         }
@@ -37,10 +38,10 @@ void cataShare(){
             lMotor.move(127);
             rMotor.move(127);
             if(!cataLimit1.get_value()){
-                pros::delay(10);
+                //pros::delay(5);
                 lMotor.move(0);
                 rMotor.move(0);
-                pros::delay(150);
+                pros::delay(110);
                 state = PRIME;
             }
         }
