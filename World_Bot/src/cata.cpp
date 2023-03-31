@@ -35,10 +35,9 @@ void cataShare(){
         else if(state == SHOOT){
             lMotor.set_brake_mode(pros::E_MOTOR_BRAKE_BRAKE);
             rMotor.set_brake_mode(pros::E_MOTOR_BRAKE_BRAKE);
-            lMotor.move(127);
-            rMotor.move(127);
+            lMotor.move(110);
+            rMotor.move(110);
             if(!cataLimit1.get_value()){
-                //pros::delay(5);
                 lMotor.move(0);
                 rMotor.move(0);
                 pros::delay(110);
