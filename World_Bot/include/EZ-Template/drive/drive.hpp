@@ -18,6 +18,7 @@ using namespace ez;
 
 class Drive {
  public:
+  double opp_swing_p = 1.0;
   /**
    * Joysticks will return 0 when they are within this number.  Set with set_joystick_threshold()
    */

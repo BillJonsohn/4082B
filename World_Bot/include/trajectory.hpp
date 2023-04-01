@@ -7,3 +7,5 @@ struct TrajectoryPoint{
 };
 
 using Trajectory = std::vector<TrajectoryPoint>;
+
+void followPath(Trajectory path);

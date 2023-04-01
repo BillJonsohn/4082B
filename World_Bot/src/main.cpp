@@ -65,7 +65,7 @@ void initialize() {
 
   // Configure your chassis controls
   chassis.toggle_modify_curve_with_controller(false); // Enables modifying the controller curve with buttons on the joysticks
-  chassis.set_active_brake(0); // Sets the active brake kP. We recommend 0.1.
+  //chassis.set_active_brake(0); // Sets the active brake kP. We recommend 0.1.
   chassis.set_curve_default(9, 0); // Defaults for curve. If using tank, only the first parameter is used. (Comment this line out if you have an SD card!)
   default_constants(); // Set the drive to your own constants from autons.cpp!
 
@@ -131,7 +131,7 @@ void autonomous() {
   chassis.reset_pid_targets(); // Resets PID targets to 0
   chassis.reset_gyro(); // Reset gyro position to 0
   chassis.reset_drive_sensor(); // Reset drive sensors to 0
-  chassis.set_drive_brake(MOTOR_BRAKE_HOLD); // Set motors to hold.  This helps autonomous consistency.
+  chassis.set_drive_brake(MOTOR_BRAKE_BRAKE); // Set motors to hold.  This helps autonomous consistency.
 
   ez::as::auton_selector.call_selected_auton(); // Calls selected auton from autonomous selector.
 }
