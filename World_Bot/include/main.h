@@ -82,6 +82,7 @@ void opcontrol(void);
  * You can add C++-only headers here
  */
 #include "cata.hpp"
+#include "trajectory.hpp"
 //#include <iostream>
 #endif
 
