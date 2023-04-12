@@ -67,7 +67,7 @@ void cataIntake(int speed){
 }
 
 void cataRoller(int time){
-    intakeSpeed = 127;
+    intakeSpeed = -127;
     pros::delay(time);
     intakeSpeed = 0;
 }
