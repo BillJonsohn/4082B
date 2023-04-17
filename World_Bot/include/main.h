@@ -83,6 +83,7 @@ void opcontrol(void);
  */
 #include "cata.hpp"
 #include "trajectory.hpp"
+#include "pistons.hpp"
 //#include <iostream>
 #endif
 

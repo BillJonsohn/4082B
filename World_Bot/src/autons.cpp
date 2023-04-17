@@ -35,7 +35,7 @@ void default_constants() {
   chassis.set_pid_constants(&chassis.headingPID, 11, 0, 20, 0);
   chassis.set_pid_constants(&chassis.forward_drivePID, 0.45, 0, 5, 0);
   chassis.set_pid_constants(&chassis.backward_drivePID, 0.45, 0, 5, 0);
-  chassis.set_pid_constants(&chassis.turnPID, 6.17, 0.015, 65, 13);//5, 0.003, 35, 15 //Mikhael Constants 6.4, 0.006, 47, 12 //6.2, 0.015, 44.5, 12
+  chassis.set_pid_constants(&chassis.turnPID, 6.17, 0.015, 65, 13);//5, 0.003, 35, 15 //Mikhael Constants 6.4, 0.006, 47, 12 //6.17, 0.015, 65, 13
   chassis.set_pid_constants(&chassis.swingPID, 6, 0, 30, 0);
 }
 
@@ -512,21 +512,64 @@ Trajectory path1 = {
 
 void awp() {
 
-  chassis.set_drive_pid(-8, 80, true);
-  cataRoller(200);
+  chassis.set_angle(-45);
+
+  actuateBoost();
+
+
+  chassis.set_drive_pid(4, 20, true);
+  cataRoller(150);
+  chassis.set_drive_pid(-6, 80, true);
+  chassis.wait_until(-2);
+  cataIntake(127);
+  chassis.wait_drive();
+
+  chassis.set_turn_pid(-90, 120);
+  chassis.wait_drive();
+
+  chassis.set_drive_pid(12, 80, true);
+  chassis.wait_drive();
+
+  chassis.set_turn_pid(-195, 120);
+  chassis.wait_drive();
+
+  chassis.set_drive_pid(8, 120, true);
+  chassis.wait_until(1);
+  cataShoot();
+  chassis.wait_drive();
+
+  actuateBoost();
+
+  actuateIntake();
+
+  chassis.set_turn_pid(-10, 120);
+  chassis.wait_drive();
+
+  chassis.set_drive_pid(-5, 80, true);
+  chassis.wait_drive();
+
+  actuateIntake();
+
+  wait(1000);
+
+  chassis.set_turn_pid(85, 120);
+  chassis.wait_drive();
   
 
 
-  chassis.set_mode(ez::DISABLE);
+
+
+
+
+
+
+  //chassis.set_mode(ez::DISABLE);
   //followPath(path);
-  followPath(path1);
+  //followPath(path1);
   //chassis.set_drive_pid(24, 80, true);
   //chassis.wait_drive();
 
   //chassis.set_swing_pid(ez::LEFT_SWING, 180, 90);
-  //chassis.wait_drive();
-
-  //chassis.set_turn_pid(180, 120);
   //chassis.wait_drive();
 
   //chassis.set_turn_pid(90, 120);

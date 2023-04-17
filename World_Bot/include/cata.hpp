@@ -13,3 +13,5 @@ void cataRoller(int time);
 void cataWait();
 
 void cataInitialize();
+
+void wait(int msec);

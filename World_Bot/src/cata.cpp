@@ -5,7 +5,7 @@
 
 pros::Motor lMotor (12, true);
 pros::Motor rMotor (20);
-pros::ADIDigitalIn cataLimit1('G');
+pros::ADIDigitalIn cataLimit1('E');
 pros::ADIDigitalIn cataLimit2('B');
 
 cata_states state = HOLD;
@@ -17,12 +17,15 @@ void cataShare(){
         if(state == PRIME){
             lMotor.set_brake_mode(pros::E_MOTOR_BRAKE_BRAKE);
             rMotor.set_brake_mode(pros::E_MOTOR_BRAKE_BRAKE);
-            if(!cataLimit1.get_value() || cataLimit2.get_value()){
-                lMotor.move(127);
-                rMotor.move(127);
+            if(cataLimit1.get_value() || cataLimit2.get_value()){
+                lMotor.move(0);
+                rMotor.move(0);
+                wait(50);
+                state = HOLD;
             }
             else{
-                state = HOLD;
+                lMotor.move(127);
+                rMotor.move(127);
             }
         }
         else if(state == HOLD){
@@ -80,4 +83,8 @@ void cataWait(){
 
 void cataInitialize(){
     pros::Task cataTask(cataShare);
+}
+
+void wait(int msec){
+    pros::delay(msec);
 }

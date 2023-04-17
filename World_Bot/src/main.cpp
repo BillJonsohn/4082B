@@ -2,7 +2,9 @@
 #include "EZ-Template/auton.hpp"
 #include "autons.hpp"
 #include "EZ-Template/util.hpp"
+#include "pistons.hpp"
 #include "pros/misc.h"
+#include "pros/motors.hpp"
 
 // Chassis constructor
 Drive chassis (
@@ -12,7 +14,7 @@ Drive chassis (
 
   // Right Chassis Ports (negative port will reverse it!)
   //   the first port is the sensored port (when trackers are not used!)
-  ,{9, 7, 6} //-8, 9, 10
+  ,{ 9, 7, 6} //-8, 9, 10
 
   // IMU Port
   ,16
@@ -66,7 +68,7 @@ void initialize() {
   // Configure your chassis controls
   chassis.toggle_modify_curve_with_controller(false); // Enables modifying the controller curve with buttons on the joysticks
   //chassis.set_active_brake(0); // Sets the active brake kP. We recommend 0.1.
-  chassis.set_curve_default(9, 0); // Defaults for curve. If using tank, only the first parameter is used. (Comment this line out if you have an SD card!)
+  chassis.set_curve_default(8, 0); // Defaults for curve. If using tank, only the first parameter is used. (Comment this line out if you have an SD card!)
   default_constants(); // Set the drive to your own constants from autons.cpp!
 
   // These are already defaulted to these buttons, but you can change the left/right curve buttons here!
@@ -158,10 +160,15 @@ void opcontrol() {
   while (true) {
 
     // chassis.tank(); // Tank control
-    // chassis.arcade_standard(ez::SPLIT); // Standard split arcade
+    //chassis.arcade_standard(ez::SPLIT); // Standard split arcade
     // chassis.arcade_standard(ez::SINGLE); // Standard single arcade
-     chassis.arcade_flipped(ez::SPLIT); // Flipped split arcade
+    chassis.arcade_flipped(ez::SPLIT); // Flipped split arcade
     // chassis.arcade_flipped(ez::SINGLE); // Flipped single arcade
+
+    double throttle = 0;
+    double turn = 0;
+
+
 
     if(master.get_digital(DIGITAL_R1)){
       cataIntake(127);
@@ -174,12 +181,32 @@ void opcontrol() {
       cataShoot();
     }
 
-    if(master.get_digital_new_press(DIGITAL_A)){
+    if(master.get_digital_new_press(DIGITAL_Y)){
       cataPrime();
     }
 
     if(master.get_digital_new_press(DIGITAL_B)){
       cataHold();
+    }
+
+    if(master.get_digital_new_press(DIGITAL_UP)){
+      eg();
+    }
+
+    if(master.get_digital_new_press(DIGITAL_L2)){
+      actuateIntake();
+    }
+
+    if(master.get_digital_new_press(DIGITAL_A)){
+      actuateBoost();
+    }
+
+    if(master.get_digital_new_press(DIGITAL_X)){
+      releaseBoost();
+    }
+
+    if(master.get_digital_new_press(DIGITAL_L1)){
+      actuateWedges();
     }
 
     pros::delay(ez::util::DELAY_TIME); // This is used for timer calculations!  Keep this ez::util::DELAY_TIME
