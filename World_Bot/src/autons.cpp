@@ -1,5 +1,6 @@
 #include "EZ-Template/util.hpp"
 #include "main.h"
+#include "pistons.hpp"
 #include "trajectory.hpp"
 
 
@@ -29,7 +30,7 @@ const int SWING_SPEED = 90;
 //d wants to get to 0 velocity
 
 void default_constants() {
-  chassis.opp_swing_p = 2.0;
+  chassis.opp_swing_p = 10.0;
   chassis.set_slew_min_power(80, 80);
   chassis.set_slew_distance(7, 7);
   chassis.set_pid_constants(&chassis.headingPID, 11, 0, 20, 0);
@@ -40,9 +41,9 @@ void default_constants() {
 }
 
 void exit_condition_defaults() {
-  chassis.set_exit_condition(chassis.turn_exit, 70, 1, 220, 3, 500, 500);//100, 3, 500, 7, 500, 500 //100, 2, 500, 4, 500, 500
+  chassis.set_exit_condition(chassis.turn_exit, 70, 2, 220, 3, 500, 500);//100, 3, 500, 7, 500, 500 //100, 2, 500, 4, 500, 500// 70, 1, 220, 3, 500, 500
   chassis.set_exit_condition(chassis.swing_exit, 100, 3, 500, 7, 500, 500);//100, 3, 500, 7, 500, 500
-  chassis.set_exit_condition(chassis.drive_exit, 20, 60, 300, 150, 500, 500);//80, 50, 300, 150, 500, 500
+  chassis.set_exit_condition(chassis.drive_exit, 20, 40, 300, 150, 500, 500);//80, 50, 300, 150, 500, 500//20, 60, 300, 150, 500, 500
 }
 
 Trajectory path = {
@@ -519,42 +520,79 @@ void awp() {
 
   chassis.set_drive_pid(4, 20, true);
   cataRoller(150);
-  chassis.set_drive_pid(-6, 80, true);
+  chassis.set_drive_pid(-7, 100, true);
   chassis.wait_until(-2);
   cataIntake(127);
   chassis.wait_drive();
 
-  chassis.set_turn_pid(-90, 120);
+  chassis.set_turn_pid(-124, 120);
   chassis.wait_drive();
 
-  chassis.set_drive_pid(12, 80, true);
+  chassis.set_drive_pid(21, 100, true);
   chassis.wait_drive();
 
-  chassis.set_turn_pid(-195, 120);
+  chassis.set_turn_pid(-197, 120);
   chassis.wait_drive();
 
-  chassis.set_drive_pid(8, 120, true);
-  chassis.wait_until(1);
+  //chassis.set_drive_pid(13, 120, true);
+  //chassis.wait_drive();
+
+  wait(100);
+
   cataShoot();
-  chassis.wait_drive();
+
+  wait(300);
 
   actuateBoost();
 
   actuateIntake();
 
-  chassis.set_turn_pid(-10, 120);
+  wait(700);
+
+  chassis.set_turn_pid(-51.2, 120);
   chassis.wait_drive();
 
-  chassis.set_drive_pid(-5, 80, true);
+  chassis.set_drive_pid(-5.35, 80, true);
   chassis.wait_drive();
 
   actuateIntake();
 
   wait(1000);
 
-  chassis.set_turn_pid(85, 120);
+  chassis.set_turn_pid(-193, 120);
   chassis.wait_drive();
+
+  //chassis.set_drive_pid(-5, 80, true);
+  //chassis.wait_drive();
+
+  actuateBoost();
   
+  wait(150);
+
+  cataShoot();
+
+  wait(200);
+
+  actuateBoost();
+
+  actuateIntake();
+
+  chassis.set_turn_pid(-290, 120);
+  chassis.wait_drive();
+
+  wait(700);
+
+  chassis.set_drive_pid(-10, 35, true);
+  chassis.wait_drive();
+
+  actuateIntake();
+
+  wait(1000);
+
+  chassis.set_turn_pid(-213, 120);
+  chassis.wait_drive();
+
+
 
 
 

@@ -18,6 +18,7 @@ void cataShare(){
             lMotor.set_brake_mode(pros::E_MOTOR_BRAKE_BRAKE);
             rMotor.set_brake_mode(pros::E_MOTOR_BRAKE_BRAKE);
             if(cataLimit1.get_value() || cataLimit2.get_value()){
+                wait(3);
                 lMotor.move(0);
                 rMotor.move(0);
                 wait(50);
