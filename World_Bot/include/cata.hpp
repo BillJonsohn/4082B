@@ -6,7 +6,7 @@ void cataHold();
 
 void cataShoot();
 
-void cataIntake(int speed = -127);
+void cataIntake(int speed = 127);
 
 void cataRoller(int time);
 
@@ -15,3 +15,5 @@ void cataWait();
 void cataInitialize();
 
 void wait(int msec);
+
+extern bool bandCata;

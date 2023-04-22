@@ -9,6 +9,7 @@ pros::ADIDigitalOut wedges('C', true);
 bool intakeUp = false;
 bool cataBoostActive = false;
 bool wedgesUp = true;
+bool bandCata = false;
 
 void eg(){
     endgame.set_value(true);
@@ -25,7 +26,8 @@ void actuateBoost(){
 }
 
 void releaseBoost(){
-    bandBoost.set_value(true);
+    bandCata = !bandCata;
+    bandBoost.set_value(bandCata);
 }
 
 void actuateWedges(){
