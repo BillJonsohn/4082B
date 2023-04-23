@@ -77,9 +77,9 @@ void initialize() {
 
   // Autonomous Selector using LLEMU
   ez::as::auton_selector.add_autons({
-    Auton("Awp Auton", awp),
-    Auton("Left Auton", left_auton),
-    Auton("Right Auton", right_auton),
+   // Auton("Awp Auton", awp),
+   // Auton("Left Auton", left_auton),
+   // Auton("Right Auton", right_auton),
     Auton("Left Special", left_special),
     Auton("Right Special", right_special),
   });
@@ -156,6 +156,7 @@ void autonomous() {
 void opcontrol() {
   // This is preference to what you like to drive on.
   chassis.set_drive_brake(MOTOR_BRAKE_COAST);
+  cataPrime();
 
   while (true) {
 

@@ -28,8 +28,8 @@ void cataShare(){
                 }
 
                 else if(!bandCata){
-                    lMotor.move(60);
-                    rMotor.move(60);
+                    lMotor.move(70);
+                    rMotor.move(70);
                 }
                 else{
                     lMotor.move(85);
