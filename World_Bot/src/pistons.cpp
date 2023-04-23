@@ -5,10 +5,10 @@ pros::ADIDigitalOut endgame('G');
 pros::ADIDigitalOut intake('D');
 pros::ADIDigitalOut cataBoost('F');
 pros::ADIDigitalOut bandBoost('H');
-pros::ADIDigitalOut wedges('C', true);
+pros::ADIDigitalOut wedges('C');
 bool intakeUp = false;
 bool cataBoostActive = false;
-bool wedgesUp = true;
+bool wedgesUp = false;
 bool bandCata = false;
 
 void eg(){
