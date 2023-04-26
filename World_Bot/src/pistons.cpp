@@ -26,7 +26,7 @@ void actuateBoost(){
 }
 
 void releaseBoost(){
-    bandCata = !bandCata;
+    bandCata = true;
     bandBoost.set_value(bandCata);
 }
 

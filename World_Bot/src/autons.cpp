@@ -518,13 +518,13 @@ void awp() {
   actuateBoost();
 
   chassis.set_drive_pid(4, 20, true);
-  cataRoller(150);
+  cataRoller(170);
   chassis.set_drive_pid(-22, 50, true);
-  chassis.wait_until(-2);
+  chassis.wait_until(-1);
   cataIntake();//100
   chassis.wait_drive();
 
-  chassis.set_turn_pid(164.5, 120);
+  chassis.set_turn_pid(165.5, 120);
   chassis.wait_drive();
 
   wait(100);
@@ -539,22 +539,22 @@ void awp() {
   chassis.wait_drive();
 
   actuateIntake();
-  
-  chassis.set_drive_pid(-6.5, 80, true);
-  chassis.wait_drive();
 
   cataIntake();
-
+  
+  chassis.set_drive_pid(-6.5, 80, true);
+  chassis.wait_until(-6.25);
   actuateIntake();
+  chassis.wait_drive();
 
   wait(400);
 
-  chassis.set_drive_pid(6, 50);
+  chassis.set_drive_pid(6, 40);
   chassis.wait_drive();
 
   wait(200);
 
-  chassis.set_drive_pid(-6.2, 40);
+  chassis.set_drive_pid(-6, 40);
   chassis.wait_drive();
 
   chassis.set_turn_pid(161, 120);
@@ -575,7 +575,7 @@ void awp() {
 
   cataIntake();//95
 
-  chassis.set_drive_pid(-90, 75, true);
+  chassis.set_drive_pid(-89, 75, true);
   chassis.wait_drive();
 
   chassis.set_turn_pid(110, 120);
@@ -589,15 +589,15 @@ void awp() {
 
   wait(300);
 
-  //releaseBoost();
+  releaseBoost();
 
   actuateBoost();
 
   chassis.set_turn_pid(43, 120);
   chassis.wait_drive();
 
-  chassis.set_drive_pid(-17, 120);
-  chassis.wait_until(-16);
+  chassis.set_drive_pid(-18, 120);
+  chassis.wait_until(-17);
 
   chassis.set_turn_pid(90, 120);
   chassis.wait_until(86);
@@ -794,7 +794,7 @@ void right_auton() {
   chassis.set_drive_pid(5, 80, true);
   cataRoller(200);
 
-  chassis.set_drive_pid(-61, 100, true);
+  chassis.set_drive_pid(-61, 100, true);//100 speed
   chassis.wait_until(-10);
   cataIntake();//120
   chassis.wait_drive();
@@ -804,8 +804,8 @@ void right_auton() {
   chassis.set_turn_pid(130, 120);
   chassis.wait_drive();
 
-  chassis.set_drive_pid(2, 60);
-  chassis.wait_drive();
+  //chassis.set_drive_pid(2, 60);
+  //chassis.wait_drive();
 
   wait(100);
 
@@ -816,18 +816,18 @@ void right_auton() {
   chassis.set_turn_pid(135, 120);
   chassis.wait_drive();
 
-  chassis.set_drive_pid(-9, 60);
+  chassis.set_drive_pid(-8, 60);
   chassis.wait_drive();
 
-  cataIntake();//110
+  cataIntake(110);//110
 
   chassis.set_turn_pid(104, 120);
   chassis.wait_drive();
 
-  chassis.set_drive_pid(-21, 30);
+  chassis.set_drive_pid(-21, 30);// 30 speed
   chassis.wait_drive();
 
-  chassis.set_drive_pid(14, 50);
+  chassis.set_drive_pid(13.5, 50);
   chassis.wait_drive();
 
   chassis.set_turn_pid(131, 120);
@@ -843,7 +843,7 @@ void right_auton() {
 
   actuateBoost();
 
-  releaseBoost();
+  //releaseBoost();
   
   cataIntake(0);
 }
@@ -966,18 +966,20 @@ void right_special() {
 
   chassis.set_angle(-45);
 
-  actuateBoost();
+  //actuateBoost();
 
   chassis.set_turn_pid(-90, 120);
   chassis.wait_drive();
 
   cataIntake();//100
 
-  chassis.set_drive_pid(-14, 90);
+  chassis.set_drive_pid(-17, 90);
   chassis.wait_drive();
 
-  chassis.set_turn_pid(-245.5, 120);
+  chassis.set_turn_pid(-246, 120);
   chassis.wait_drive();
+
+  actuateBoost();
 
   wait(100);
 
@@ -992,7 +994,7 @@ void right_special() {
 
   wait(200);
   
-  chassis.set_drive_pid(-14, 80);
+  chassis.set_drive_pid(-12, 80);
   chassis.wait_drive();
 
   chassis.set_drive_pid(8, 90);
@@ -1003,13 +1005,13 @@ void right_special() {
 
   cataIntake(0);
 
-  chassis.set_drive_pid(29.75, 110);
+  chassis.set_drive_pid(33.5, 110);
   chassis.wait_drive();
 
   chassis.set_drive_pid(4, 70);
   cataRoller(350);
 
-  chassis.set_drive_pid(-63, 100);
+  chassis.set_drive_pid(-64.25, 110);
   chassis.wait_until(-10);
   cataIntake();//120
   chassis.wait_drive();
@@ -1022,7 +1024,7 @@ void right_special() {
   chassis.set_drive_pid(5, 100);
   chassis.wait_drive();
 
-  wait(100);
+  wait(10);
 
   cataShoot();
 
@@ -1035,7 +1037,7 @@ void right_special() {
 
   wait(300);
 
-  chassis.set_drive_pid(-11.5, 60);
+  chassis.set_drive_pid(-10.25, 60);
   chassis.wait_drive();
 
   chassis.set_turn_pid(-256.25, 120);
@@ -1046,12 +1048,12 @@ void right_special() {
   cataIntake();//90
   chassis.wait_drive();
 
-  chassis.set_drive_pid(13.75, 80);
+  chassis.set_drive_pid(14.5, 80);
   chassis.wait_drive();
 
   cataIntake();
 
-  chassis.set_turn_pid(-229, 120);
+  chassis.set_turn_pid(-228, 120);
   chassis.wait_drive();
 
   actuateBoost();
@@ -1062,7 +1064,7 @@ void right_special() {
 
   wait(300);
 
-  //releaseBoost();
+  releaseBoost();
 
   actuateBoost();
   

@@ -32,8 +32,8 @@ void cataShare(){
                     rMotor.move(70);
                 }
                 else{
-                    lMotor.move(95);
-                    rMotor.move(95);
+                    lMotor.move(110);
+                    rMotor.move(110);
                 }
             }
             else{
