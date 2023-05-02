@@ -946,9 +946,11 @@ void left_special() {
 
   cataShoot();
 
-  wait(200);
+  wait(300);
 
-  chassis.set_turn_pid(103, 120);
+  releaseBoost();
+
+  /*chassis.set_turn_pid(103, 120);
   chassis.wait_drive();
 
   chassis.set_drive_pid(-14.25, 80);
@@ -960,7 +962,7 @@ void left_special() {
   chassis.set_drive_pid(-20, 55);
   chassis.wait_drive();
 
-  chassis.set_drive_pid(16, 90);
+  chassis.set_drive_pid(16, 100);
   chassis.wait_drive();
 
   chassis.set_turn_pid(140, 120);
@@ -978,7 +980,7 @@ void left_special() {
 
   releaseBoost();
 
-  cataIntake(0);
+  cataIntake(0);*/
 
 }
 
